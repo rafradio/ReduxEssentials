@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, incrementByAmount } from './mainSlice';
-import { selectCount } from './mainSlice';
+import {incrementAsync} from './mainSlice';
+import { selectCount, selectStatus } from './mainSlice';
 import styles from "./Counter.module.css";
 // import "./Counter.module.css";
 
 export const Counter = () => {
     const dispatch = useDispatch();
     const count = useSelector(selectCount);
+    const status = useSelector(selectStatus);
     const [incrementAmount, setIncrementAmount] = useState("2");
     // const [count, setRegion] = useState(0);
     // const handleCount = (value) => {
@@ -59,6 +61,17 @@ export const Counter = () => {
                 }}
                 >
                 Add Amount
+                </button>
+            </div>
+            <div className={styles.row}>
+                <button
+                    className={styles.asyncButton}
+                    // disabled={status !== "idle"}
+                    onClick={() => {
+                        dispatch(incrementAsync(incrementAmount))
+                    }}
+                >
+                Add Async
                 </button>
             </div>
         </div>
