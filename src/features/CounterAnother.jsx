@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, incrementByAmount } from './mainSlice';
-import {incrementAsync} from './mainSlice';
+import { incrementAsync } from './mainSlice';
 import { selectStatus } from './mainSlice';
-import { selectCount } from '../store/selectors';
+import { selectPost } from '../store/selectors';
 import styles from "./Counter.module.css";
 // import "./Counter.module.css";
 
-export const Counter = () => {
+export const CounterNew = () => {
     const dispatch = useDispatch();
-    const count = useSelector(selectCount);
+    const count = useSelector(selectPost);
     const status = useSelector(selectStatus);
     const [incrementAmount, setIncrementAmount] = useState("2");
     // const [count, setRegion] = useState(0);

@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
-import { Counter} from './features/Counter';
+import { Counter } from './features/Counter';
+import { CounterNew } from './features/CounterAnother';
 import {Provider} from "react-redux";
 import {store} from './store/store';
 
@@ -31,9 +32,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      {/* <Provider store={store}> */}
-        <Counter />
-      {/* </Provider> */}
+      <Counter />
+      <CounterNew />
     </>
   )
 }

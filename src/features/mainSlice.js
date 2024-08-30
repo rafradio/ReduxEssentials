@@ -3,8 +3,8 @@ import { fetchCount } from './counterApi';
 
 const initialState = {
     value: 0,
-    loading: 'idle',
-} 
+    status: "idle",
+}
 
 // const initialState = {
 //     math: {
@@ -29,13 +29,11 @@ export const counterSlice = createSlice({
         },
     },
         
-        extraReducers: (builder) => {
-            builder.addCase(incrementAsync.fulfilled, (state, action) => {
-                    state.status = "idle";
-                    state.value += action.payload;
-                })
-        
-
+    extraReducers: (builder) => {
+        builder.addCase(incrementAsync.fulfilled, (state, action) => {
+                state.status = "idle";
+                state.value += action.payload;
+            })
     },
 });
 
@@ -50,7 +48,7 @@ export const incrementAsync = createAsyncThunk(
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
-export const selectCount = state => state.counter.value;
+
 export const selectStatus = (state) => state.counter.status;
 
 export default counterSlice.reducer;
