@@ -4,11 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css';
 import { Counter } from './features/Counter';
 import { CounterNew } from './features/CounterAnother';
-import {Provider} from "react-redux";
-import {store} from './store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { newEncryment } from './features/mainSlice';
+import { selectNewValue } from './features/mainSlice'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const valueItem = useSelector(selectNewValue);
 
   return (
     <>
@@ -22,8 +25,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setCount(() => dispatch(newEncryment()))}>
+          count is {valueItem}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR

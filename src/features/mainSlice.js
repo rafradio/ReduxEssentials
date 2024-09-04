@@ -4,14 +4,8 @@ import { fetchCount } from './counterApi';
 const initialState = {
     value: 0,
     status: "idle",
+    newValue: 0,
 }
-
-// const initialState = {
-//     math: {
-//         value: 0,
-//         status: "idle",
-//     },
-// }
 
 export const counterSlice = createSlice({
     name: 'counter',
@@ -27,6 +21,7 @@ export const counterSlice = createSlice({
             console.log("На любую сумму = ", action.payload);
             state.value += action.payload
         },
+        newEncryment: state => {state.newValue += 1}, 
     },
         
     extraReducers: (builder) => {
@@ -46,9 +41,11 @@ export const incrementAsync = createAsyncThunk(
     },
   )
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, newEncryment, incrementByAmount } = counterSlice.actions;
 
 
 export const selectStatus = (state) => state.counter.status;
+
+export const selectNewValue = (state) => state.counter.newValue;
 
 export default counterSlice.reducer;
